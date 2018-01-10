@@ -14,6 +14,7 @@ class MainInteractorImpl : MainInteractor {
         val gson = GsonBuilder().setLenient().create()
 
         val retrofit = Retrofit.Builder()
+                .baseUrl("https://swapi.co/api/")
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
