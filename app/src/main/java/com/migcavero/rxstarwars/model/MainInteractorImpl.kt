@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import rx.Observable
+import io.reactivex.Observable
 
 class MainInteractorImpl : MainInteractor {
 
@@ -25,7 +25,7 @@ class MainInteractorImpl : MainInteractor {
         val observable: Observable<Film>
         observable = mStarWarsClient.getFilms()
                 // creates a single Observable for each item in list
-                .flatMap { resultList -> Observable.from(resultList.filmsList) }
+                .flatMap { resultList -> Observable.fromIterable(resultList.filmsList) }
                 // then pass the previous create Observable into a Film object
                 .flatMap { resultFilm -> Observable.just(Film(resultFilm.title, resultFilm.episodeId, resultFilm.charactersList)) }
 

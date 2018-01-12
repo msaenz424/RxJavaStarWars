@@ -1,6 +1,6 @@
 package com.migcavero.rxstarwars.model
 
-import rx.Observable
+import io.reactivex.Observable
 
 interface MainInteractor {
 
