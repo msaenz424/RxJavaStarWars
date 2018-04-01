@@ -6,7 +6,7 @@ import io.reactivex.Observable
 
 interface StarWarsClient{
     @GET("films")
-    fun getFilms(): Observable<FilmsList>
+    fun getFilmResult(): Observable<FilmResult>
 
     @GET("/people/{personId}")
     fun getPeople(@Path("personId") personId: String): Observable<Character>
